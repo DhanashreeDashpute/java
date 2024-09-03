@@ -1,0 +1,22 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(3, 1, 4, 4, 5, 2, 9, 9, 7);
+
+        Optional<Integer> secondHighest = numbers.stream()
+                .distinct()                            // Remove duplicates
+                .sorted((a, b) -> b - a)                // Sort in descending order
+                .skip(1)                                // Skip the first (highest) element
+                .findFirst();                           // Get the second highest element
+
+        // Print the result
+        if (secondHighest.isPresent()) {
+            System.out.println("The second highest number is: " + secondHighest.get());
+        } else {
+            System.out.println("There is no second highest number.");
+        }
+    }
+}
