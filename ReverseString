@@ -1,0 +1,25 @@
+public class ReverseString {
+    public String reverse(String s) {
+        // Convert the string to a character array
+        char[] charArray = s.toCharArray();
+        int left = 0, right = s.length() - 1;
+        
+        // Use two pointers to swap characters from both ends
+        while (left < right) {
+            char temp = charArray[left];
+            charArray[left] = charArray[right];
+            charArray[right] = temp;
+            left++;
+            right--;
+        }
+        
+        // Convert the character array back to a string
+        return new String(charArray);
+    }
+
+    public static void main(String[] args) {
+        ReverseString solution = new ReverseString();
+        System.out.println(solution.reverse("hello")); // Output: "olleh"
+        System.out.println(solution.reverse("Java"));  // Output: "avaJ"
+    }
+}
